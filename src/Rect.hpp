@@ -1,3 +1,6 @@
+#ifndef RECT_HPP
+#define RECT_HPP
+
 #include <cstdlib>
 #include <type_traits>
 
@@ -24,3 +27,5 @@ public:
 };
 
 #include "Rect.inl"
+
+#endif RECT_HPP // !RECT_HPP

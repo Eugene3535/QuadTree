@@ -1,11 +1,11 @@
 template<class T>
-Rect::Rect() noexcept:
+Rect<T>::Rect() noexcept:
     x(0), y(0), width(0), height(0)
 {
 }
 
 template<class T>
-Rect::Rect(float X, float Y, float W, float H) noexcept:
+Rect<T>::Rect(T X, T Y, T W, T H) noexcept:
     x(static_cast<T>(X)), 
     y(static_cast<T>(Y)), 
     width(static_cast<T>(W)), 
@@ -14,13 +14,13 @@ Rect::Rect(float X, float Y, float W, float H) noexcept:
 }
 
 template<class T>
-Rect::Rect(const Rect& other) noexcept:
+Rect<T>::Rect(const Rect& other) noexcept:
     Rect(other.x, other.y, other.width, other.height)
 {
 }
 
 template<class T>
-T Rect::getLeft() const noexcept 
+T Rect<T>::getLeft() const noexcept
 {
     if constexpr (std::is_same<T, float>::value)   
         return x - (width * 0.5f);
@@ -35,7 +35,7 @@ T Rect::getLeft() const noexcept
 }
 
 template<class T>
-T Rect::getTop() const noexcept
+T Rect<T>::getTop() const noexcept
 {
     if constexpr (std::is_same<T, float>::value)
         return y + (height * 0.5f);
@@ -50,7 +50,7 @@ T Rect::getTop() const noexcept
 }
 
 template<class T>
-T Rect::getRight() const noexcept
+T Rect<T>::getRight() const noexcept
 {
     if constexpr (std::is_same<T, float>::value)
         return x + (width * 0.5f);
@@ -65,7 +65,7 @@ T Rect::getRight() const noexcept
 }
 
 template<class T>
-T Rect::getBottom() const noexcept
+T Rect<T>::getBottom() const noexcept
 {
     if constexpr (std::is_same<T, float>::value)
         return y - (height * 0.5f);
@@ -80,7 +80,7 @@ T Rect::getBottom() const noexcept
 }
 
 template<class T>
-bool Rect::contains(const Rect& other) const noexcept
+bool Rect<T>::contains(const Rect<T>& other) const noexcept
 {
     if ((x > other.x)                       || 
         (y > other.y)                       ||
@@ -92,7 +92,7 @@ bool Rect::contains(const Rect& other) const noexcept
 }
 
 template<class T>
-bool Rect::intersects(const Rect& other) const noexcept
+bool Rect<T>::intersects(const Rect<T>& other) const noexcept
 {
     if ((x > other.x + other.width)  ||
         (x + width < other.x)        ||
