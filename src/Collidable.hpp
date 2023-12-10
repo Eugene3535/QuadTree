@@ -17,10 +17,10 @@ public:
     Collidable& operator = (const Collidable&&) = delete;
 
     Rect<float> m_bounds;
-    void*       m_data;
+    void*       m_data; // Replace with the desired component
 
 private:
-    class QuadTree* qt = nullptr;   
+    class QuadTree* quadTree;   
 };
 
 #endif // !COLLIDABLE_HPP
